@@ -30,6 +30,7 @@ public class Question {
         if (userAnswer.equals(_correctAnswer)) {
             return true;
         }
+
         return false;
 
     }

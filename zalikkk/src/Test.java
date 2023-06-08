@@ -13,6 +13,7 @@ public class Test {
             if (q.askQuestion())
                 correctAnswers++;
         }
+
         System.out.println("You answered " + correctAnswers + " out of " + questions.size() + " questions");
     }
 }
