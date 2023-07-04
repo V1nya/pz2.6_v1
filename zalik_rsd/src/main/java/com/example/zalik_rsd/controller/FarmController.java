@@ -65,16 +65,24 @@ public class FarmController {
         FarmEntity farm = farmRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid farm Id: " + id));
 
+
         model.addAttribute("farm", farm);
         return "update";
     }
 
     @PostMapping("/edit/{id}")
-    public String updateFarm(@PathVariable("id") long id, @Valid @ModelAttribute("farm") FarmEntity farm, BindingResult bindingResult) {
+    public String updateFarm(@PathVariable("id") long id, @Valid @ModelAttribute("farm") FarmEntity farm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             farm.setId(id); // Ensure that the ID is set for error handling
+            FieldError fieldError = bindingResult.getFieldErrors().get(0);
+            String errorMessage = fieldError.getDefaultMessage();
+
+//            System.out.println("Ошибка валидации: " + errorMessage);
+//            System.out.println("Каскадний номер: " + farm.getcadastreNumber()); //1234567890:12:345:6789
+            model.addAttribute("errorMessage", errorMessage);
             return "update";
         }
+
 
         farmRepository.save(farm);
         return "redirect:/";
@@ -96,6 +104,18 @@ public class FarmController {
             throw new RuntimeException(e);
         }
         return "redirect:/";
+    }
+
+    @PostMapping("/filter")
+    public String filterByEnterpriseName(@RequestParam("companyNameFilter") String enterpriseNameFilter, Model model) {
+        if (enterpriseNameFilter.equals("")){
+            List<FarmEntity> farms = farmRepository.findAll();
+            model.addAttribute("farms", farms);
+            return "index";
+        }
+        List<FarmEntity> filteredFarms = farmRepository.findByEnterpriseName(enterpriseNameFilter);
+        model.addAttribute("farms", filteredFarms);
+        return "index";
     }
 
 }

@@ -6,6 +6,11 @@
 </head>
 <body>
 <h1>Список підприємств</h1>
+<form action="/filter" method="post">
+    <label for="companyNameFilter">Фільтр по назві підприємства:</label>
+    <input type="text" id="companyNameFilter" name="companyNameFilter">
+    <button type="submit">Фільтрувати</button>
+</form>
 <table>
     <tr>
         <th>Кадастровий номер</th>

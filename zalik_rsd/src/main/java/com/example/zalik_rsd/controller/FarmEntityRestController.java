@@ -48,7 +48,36 @@ public class FarmEntityRestController {
         }
     }
 
-    @PostMapping("/addFarmEntity")
+    @GetMapping("/{id}")
+    public ResponseEntity<String> getFarmEntityById(@PathVariable("id") int id) {
+        try {
+            id--;
+            if (id<0){
+                return ResponseEntity.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(objectMapper.writeValueAsString("Min id-1"));
+            }
+            List<FarmEntity> farmEntities = farmRepository.findAll();
+            if (id>farmEntities.size()){
+                return ResponseEntity.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(objectMapper.writeValueAsString("Max id-"+farmEntities.size()+1));
+            }
+            FarmEntity farmEntityID = farmEntities.get(id);
+            String json = objectMapper.writeValueAsString(farmEntityID);
+
+            return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(json);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+
+    @PutMapping("/addFarmEntity")
     public ResponseEntity<String> createFarmEntity(@Valid @RequestBody FarmEntity farm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             String errorMessage = bindingResult.getFieldError().getDefaultMessage();
@@ -59,7 +88,7 @@ public class FarmEntityRestController {
 
         String responseJson = null;
         try {
-            responseJson = objectMapper.writeValueAsString("create new Farm Entity");
+            responseJson = objectMapper.writeValueAsString(farm);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
