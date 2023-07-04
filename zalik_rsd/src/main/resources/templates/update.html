@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Редагувати підприємство</title>
+</head>
+<body>
+<h1>Редагувати підприємство</h1>
+<form action="#" method="post">
+  <input type="hidden" th:field="${farm.id}">
+  <div>
+    <label for="cadastreNumber">Кадастровий номер:</label>
+    <input type="text" id="cadastreNumber" name="cadastreNumber" th:field="${farm.cadastreNumber}" required>
+  </div>
+  <div>
+    <label for="enterpriseName">Назва підприємства:</label>
+    <input type="text" id="enterpriseName" name="enterpriseName" th:field="${farm.enterpriseName}" required>
+  </div>
+  <div>
+    <label for="annualIncome">Річний дохід:</label>
+    <input type="number" id="annualIncome" name="annualIncome" th:field="${farm.annualIncome}" required min="0">
+  </div>
+  <div>
+    <label for="landArea">Площа землі:</label>
+    <input type="number" id="landArea" name="landArea" th:field="${farm.landArea}" required min="0">
+  </div>
+  <button type="submit">Зберегти</button>
+</form>
+</body>
+</html>

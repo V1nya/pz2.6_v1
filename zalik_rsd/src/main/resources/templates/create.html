@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Додати підприємство</title>
+</head>
+<body>
+<h1>Додати підприємство</h1>
+<div th:if="${errorMessage}" style="color: red">
+  <p th:text="${errorMessage}"></p>
+</div>
+<form action="/add" method="post">
+  <div>
+    <label for="cadastreNumber">Кадастровий номер:</label>
+    <input type="text" id="cadastreNumber" name="cadastreNumber" required>
+  </div>
+  <div>
+    <label for="enterpriseName">Назва підприємства:</label>
+    <input type="text" id="enterpriseName" name="enterpriseName" required>
+  </div>
+  <div>
+    <label for="annualIncome">Річний дохід:</label>
+    <input type="number" id="annualIncome" name="annualIncome" required min="0">
+  </div>
+  <div>
+    <label for="landArea">Площа землі:</label>
+    <input type="number" id="landArea" name="landArea" required min="0">
+  </div>
+  <button type="submit">Додати</button>
+</form>
+</body>
+</html>
