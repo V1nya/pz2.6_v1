@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Diagnosis</title>
+</head>
+<body>
+<header>
+    <a href="/medicine/expiry">Get expiry</a>
+    <a href="/medicine/delivery">Get delivery</a>
+
+    <a href="/medicine/form">Add Medicine</a>
+    <a href="/order/form">Add Order</a>
+    <a href="/doctor/form">Add Doctor</a>
+    <a href="/patient/form">Add Patient</a>
+    <a href="/diagnosis/form">Add Diagnosis</a>
+
+
+</header>
+<h1>Add Diagnosis</h1>
+<form action="/diagnosis/add" method="post">
+    <label for="doctorId">Doctor ID:</label>
+    <input type="text" id="doctorId" name="doctorId"><br>
+
+    <label for="patientId">Patient ID:</label>
+    <input type="text" id="patientId" name="patientId"><br>
+
+    <label for="diagnosis">Diagnosis:</label>
+    <input type="text" id="diagnosis" name="diagnosis"><br>
+
+    <label for="diagnosisDate">Diagnosis Date:</label>
+    <input type="date" id="diagnosisDate" name="diagnosisDate"><br>
+
+    <input type="submit" value="Add">
+</form>
+</body>
+</html>

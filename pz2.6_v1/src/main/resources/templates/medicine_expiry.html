@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicine Expiry</title>
+</head>
+<body>
+<header>
+    <a href="/medicine/expiry">Get expiry</a>
+    <a href="/medicine/delivery">Get delivery</a>
+
+    <a href="/medicine/form">Add Medicine</a>
+    <a href="/order/form">Add Order</a>
+    <a href="/doctor/form">Add Doctor</a>
+    <a href="/patient/form">Add Patient</a>
+    <a href="/diagnosis/form">Add Diagnosis</a>
+
+
+</header>
+<h1>Medicine Expiry</h1>
+<table>
+    <tr>
+        <!DOCTYPE html>
+        <html xmlns:th="http://www.thymeleaf.org">
+        <head>
+            <meta charset="UTF-8">
+            <title>Medicine Expiry</title>
+        </head>
+        <body>
+        <h1>Medicine Expiry</h1>
+        <table>
+            <tr>
+                <th>Medicine ID</th>
+                <th>Name</th>
+                <th>Expiry Date</th>
+                <th>Arrival Date</th>
+            </tr>
+            <tr th:each="medicine : ${medicines}">
+                <td th:text="${medicine.id}"></td>
+                <td th:text="${medicine.name}"></td>
+                <td th:text="${medicine.expiryDate}"></td>
+                <td th:text="${medicine.arrivalDate}"></td>
+            </tr>
+        </table>
+        </body>
+        </html>

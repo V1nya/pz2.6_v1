@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicine Delivery</title>
+</head>
+<body>
+<header>
+    <a href="/medicine/expiry">Get expiry</a>
+    <a href="/medicine/delivery">Get delivery</a>
+
+    <a href="/medicine/form">Add Medicine</a>
+    <a href="/order/form">Add Order</a>
+    <a href="/doctor/form">Add Doctor</a>
+    <a href="/patient/form">Add Patient</a>
+    <a href="/diagnosis/form">Add Diagnosis</a>
+
+
+</header>
+<h1>Medicine Delivery</h1>
+<p>Average Delivery Days: <span th:text="${averageDeliveryDays}"></span></p>
+</body>
+</html>
