@@ -54,7 +54,7 @@ public class DoctorController {
 
         for (Order order : orders) {
             LocalDate deliveryDate = order.getOrderDate();
-            LocalDate arrivalDate = order.getMedicine().getArrivalDate();
+            LocalDate arrivalDate = order.getMedicine()== null? LocalDate.now() : order.getMedicine().getArrivalDate();
 
             if (deliveryDate != null && deliveryDate.isBefore(today) && arrivalDate != null) {
                 int days = (int) ChronoUnit.DAYS.between(deliveryDate, arrivalDate);
